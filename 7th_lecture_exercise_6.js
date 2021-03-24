@@ -39,3 +39,20 @@ console.log(todos);
 // 2. 힌트) 스프레드 문법과 map을 사용! 
 // 3. 우선 우리가 원하는 result는 todos라는 배열에서 각 객체들 중 completed의 프로퍼티 값을 반전 시키는 것이니... 삼항 연산자로 
 //    만약 todo.id 가 인자로 받은 id와 같은가? 를 조건으로 걸고, 만약 그렇다면 !todo.completed로 반전한다. 
+
+
+// ------------- 강사님 Code ---------------- //
+let todos = [
+  { id: 3, content: 'HTML', completed: false },
+  { id: 2, content: 'CSS', completed: true },
+  { id: 1, content: 'Javascript', completed: false }
+];
+
+// 소스가 3갠데 결과물도 3개면 --> map!!!
+
+function toggleCompletedById(id) {
+	// 잊지말고 재할당! todos에 ~
+	// 근데 아래는... todo.id는 숫잔데 id는 문자열! 그래서 타입이 안맞으니까 항상 false일 때 출력되는 값으로만 출력된다! 
+	// 그래서 타입을 맞춰주자! +id 해서 ~ 문자열을 숫자로! 
+	todos = todos.map(todo => todo.id === +id ? {...todo, completed: !todo.completed} : todo));
+}

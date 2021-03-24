@@ -30,3 +30,20 @@ function countCompletedTodos() {
 		return result;
 }
 console.log(countCompletedTodos()); // 1
+
+
+
+// ------------- 강사님 Code ---------------- //
+let todos = [
+	{ id: 3, content: 'HTML', completed: false },
+	{ id: 2, content: 'CSS', completed: true },
+	{ id: 1, content: 'Javascript', completed: false }
+];
+
+function countCompletedTodos() {
+	//completed가 true인 애들만 필터! 
+	// todos.filter(todo => todo.completed)    // todo.completed === true와 같은 말! 
+	return todos.filter(todo => todo.completed).length;
+}
+
+console.log(countCompletedTodos()); // 1

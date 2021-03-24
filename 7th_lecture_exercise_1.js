@@ -47,3 +47,53 @@ console.log(render());
 // todos.forEach(todo => console.log(todo['id'], todo['content']))  
 // ${todo.completed ? 'checked' : ''}
 
+
+// ------------- 강사님 Code ---------------- //
+const todos = [
+  { id: 3, content: 'HTML', completed: false },
+  { id: 2, content: 'CSS', completed: true },
+  { id: 1, content: 'Javascript', completed: false }
+];
+
+function render() {
+  // forEach 말고 map으로 문제해결 하는 것도 가능. 변수를 적을 필요가 없어 사실상 더 좋은 방법!
+  // return todos.map(todo => {    
+  //   // 여기서 계속 반복되는 todo를 디스트럭처링 할당으로 대체할 수 있음! 
+  //   return `<li id="${todo.id}">
+  //     <label><input type="checkbox" ${todo.completed ? 'checked' : ''}>${todo.content}</label>
+  //   </li>`;
+  // 그래서 아래와 같이~^^ 그냥 받아드리기~!!
+  return todos
+    .map(({id, content, completed}) => {
+      return `<li id="${id}">
+                <label><input type="checkbox" ${completed ? 'checked' : ''}>${content}</label>
+              </li>`
+      ;
+    })
+    .join('')
+}
+
+console.log(render());
+
+
+//  배열 디스트럭처링 할당 
+const [a, b] = [1, 2];    // [a, b]안에는 뭐가 오는 자리?? 식별자가 오는 자리! 
+console.log(a, b); 
+
+// 만약 배열 디스트럭처링 할당이 없었으면 아래와 같이 해야한다는 안좋은 점이 ... 
+const arr = [1, 2];
+const a = arr[0];
+const b = arr[1];  
+
+// 그럼 이제, 객체 디스트럭처링 할당 
+const {b, a} = {a:1, b:2};   // 차이점: 객체니까 {}로~ 
+// 차이점: 객체 디스트럭처링 할당은 배열 디스트럭처링 할당처럼 순서대로 들어오는 것이 아님! 키대로 들어옴! 
+// 그래서 console.log(a, b); 하면 그 순서대로 할당 안해도 오케이~ 
+
+// 또한... 객체 디스트럭처링 할당을 할 때 사용할 수 있는 표현식!! 
+const {b, a} = {a:1, b:2}; 
+
+fuction foo(o) {  // 여기서 o 자리에 {a, b} 를 넣어도 되는데 왜?? 왜? 가능?? 왜냐면 ()안에 있는 매개변수에 결국 인수가 할당되는 거니까~ 
+  return (인수)
+};
+
